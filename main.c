@@ -12,38 +12,45 @@
 /*
 *   Simple main function:
 */
-int main() {
+int main(int argc, char const *argv[]) {
 
-    clearScreen();
+    if (argc == 2 && strcmp(argv[1], "-ui") == 0) {
+        clearScreen();
 
-    while (1) {
-        // Print menu:
-        printf("Bathymetric surface tools - select option:\n\
-            \n    1. Rolling Coin surface smoothing (Navigationally safe 2.5D surface smoothing) \
-            \n    2. Laplacian surface smoothing    (Navigationally safe 2.5D surface smoothing)\
-            \n    3. Test coin radius and trimming \
-            \n    4. Clear screen \
-            \n    5. Exit \
-            \n\n");
+        while (1) {
+            // Print menu:
+            printf("Bathymetric surface tools - select option:\n\
+                \n    1. Rolling Coin surface smoothing (Navigationally safe 2.5D surface smoothing) \
+                \n    2. Laplacian surface smoothing    (Navigationally safe 2.5D surface smoothing)\
+                \n    3. Test coin radius and trimming \
+                \n    4. Clear screen \
+                \n    5. Exit \
+                \n\n");
 
-        char action = intInput(1, 5, "Choose action: ");
+            char action = intInput(1, 5, "Choose action: ");
 
-        if (action == 1) {
-            rollingCoinSmoothing();
+            if (action == 1) {
+                rollingCoinSmoothing();
 
-        }   else if (action == 2) {
-            laplacianSmoothing();
-            
-        }   else if (action == 3) {
-            testCoins();
+            }   else if (action == 2) {
+                laplacianSmoothing();
 
-        }   else if (action == 4) {
-            clearScreen();
+            }   else if (action == 3) {
+                testCoins();
 
-        }   else if (action == 5) {
-            clearScreen();
-            break;
-        } 
+            }   else if (action == 4) {
+                clearScreen();
+
+            }   else if (action == 5) {
+                clearScreen();
+                break;
+            }
+        }
+    }   else if (argc > 3) {
+        printf("CLI-toiminnot tänne\n");
+    }   else {
+        clearScreen();
+        printHelp();
     }
 
     return 0;

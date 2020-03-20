@@ -57,7 +57,7 @@ void writeSurfaceToFile(struct FloatSurface *input, char *outputpath) {
     char **papszOptions = NULL;
     char outputfp[1000];
 
-    // Parse output filename if NULL was passed as parameter.
+    // Parse output filename if NULL was passed as parameter
     if (outputpath == NULL) {
         parsePath(input->inputfp, "_smoothed_surface.tif", outputfp);
     }   else {

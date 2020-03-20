@@ -2,10 +2,27 @@
 
 /*
 *   This file contains:
-*   - Printer functions for structured data types
-*     to help with development. 
-*   - These are not strictly necessary (but used in current main, so included also here)
+*   - Printer functions for structured data types sto help with development
+*   - Help
 */
+
+/*
+*   Prints help
+*/
+void printHelp(void) {
+    printf("Bathymetric surface tools - help:\n");
+    printf("\n 1. To launch user interface use -ui flag:\n\n\tsurfacetools -ui\n");
+    printf("\n 2. CLI (use for scripting):\n\n\tsurfacetools [full inputfilepath] [full outputfilepath] -methodflag P -methodflag P -trimflag(Rolling Coin only) \n");
+    printf("\n\tMethods:\n\t  -buffer = Buffer shoals (3x3 cell focal max filter)\n\t\t* No parameters\n\t\t* Use example: surfacetools [inputfile] [outputfile] -buffer");
+    printf("\n\t  -laplacian = Laplacian smoothing\n\t\t* Parameters: [N] = number of iterations (integer)\n\t\t* Use example: surfacetools [inputfile] [outputfile] -laplacian 25");
+    printf("\n\t  -rollcoin = Rolling Coin smoothing\n\t\t* Parameters: [R] = coin radius in cells (integer), [trim/notrim] = trim flag (coin edge trimming)");
+    printf("\n\t\t* Use example: surfacetools [inputfile] [outputfile] -rollcoin 15 trim");
+    printf("\n\n\tExamples:\n");
+    printf("\t\tBuffer shoals: surfacetools inputfile.tiff outputfile.tiff -buffer\n");
+    printf("\t\tLaplacian smoothing, 10 iterations: surfacetools inputfile.tiff outputfile.tiff -laplacian 10\n");
+    printf("\t\tRolling Coin, radius 15, trimmed coin edges: surfacetools inputfile.tiff outputfile.tiff -rollcoin 15 trim\n");
+    printf("\t\tChaining process steps (Shoal Buffering >> Rolling Coin >> Laplacian Smoothing):\n\t\t  surfacetools inputfile.tiff outputfile.tiff -buffer -rollcoin 13 notrim -laplacian 10\n\n");
+}
 
 
 /*

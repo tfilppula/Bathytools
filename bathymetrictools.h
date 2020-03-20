@@ -65,7 +65,7 @@ struct Coin {
 
 
 // Control functions: (main.c)
-int main(void);
+int main(int argc, char const *argv[]);
 void rollingCoinSmoothing(void);
 void laplacianSmoothing(void);
 void testCoins(void);
@@ -99,6 +99,7 @@ void parsePath(char *inputfp, char *addon, char *ret);
 float *convertFloatArray(struct FloatSurface *input);
 void writeSurfaceToFile(struct FloatSurface *input, char *outputpath);
 
-// Development helper functions (infoprinters.c), these are not strictly necessary:
+// Printers for help etc:
+void printHelp(void);
 void printFloatSurfaceInfo(struct FloatSurface *input);
 void printCoin(struct Coin *penny);
