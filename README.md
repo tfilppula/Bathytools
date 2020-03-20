@@ -3,8 +3,6 @@ This repository holds bathymetric surface manipulation tools that I developed or
 
 This source code includes efficient implementations (written in pure C) of Rolling Coin surface smoothing algorithm (for more information please refer to my thesis) and navigationally safe iterative Laplacian interpolation.
 
-A short English description of the Rolling Coin algorithm is also available online at https://github.com/finnishtransportagency/RollingCoin (see the description of 'V2' version)
-
 Dependencies:
   - GDAL library (for file I/O)
 
