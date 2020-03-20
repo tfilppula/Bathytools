@@ -73,7 +73,7 @@ void clearScreen(void);
 int intInput(const int lower, const int upper, const char *text);
 
 // File input and memory management functions: (inputandmemory.c)
-struct FloatSurface *inputDepthModel(void);
+struct FloatSurface *inputDepthModel(const char *path);
 struct Coin *createCoin(const int radius, const char trim);
 void freeFloatSurface(struct FloatSurface *input);
 void freeCoin(struct Coin *penny);
@@ -95,9 +95,9 @@ float getInterpolatedDepth(struct FloatSurface *src, int row, int col);
 float getSafeSmoothDepth(struct FloatSurface *src, int row, int col);
 
 // File output functions: (fileoutput.c)
-char *parsePath(char *inputfp, char *addon);
+void parsePath(char *inputfp, char *addon, char *ret);
 float *convertFloatArray(struct FloatSurface *input);
-void writeSurfaceToFile(struct FloatSurface *input);
+void writeSurfaceToFile(struct FloatSurface *input, char *outputpath);
 
 // Development helper functions (infoprinters.c), these are not strictly necessary:
 void printFloatSurfaceInfo(struct FloatSurface *input);

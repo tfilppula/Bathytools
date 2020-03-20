@@ -60,8 +60,8 @@ void rollingCoinSmoothing(void) {
     clearScreen();
     printf("Rolling Coin surface smoothing (2.5D):\n");
 
-    // Import data and build a "FloatSurface":
-    struct FloatSurface *surf = inputDepthModel();
+    // Import data and build a "FloatSurface" (NULL:ask for input path):
+    struct FloatSurface *surf = inputDepthModel(NULL);
 
     // Use shoal buffering?
     char buffering = intInput(0, 1, "Buffer shoals to ensure contour safety? (0: No buffering, 1: Buffer shoals): ");
@@ -85,7 +85,8 @@ void rollingCoinSmoothing(void) {
     // Export file (GeoTIFF format):
     printf("Exporting file.. ");
     fflush(stdout);
-    writeSurfaceToFile(surf);
+    // Use default output filename:
+    writeSurfaceToFile(surf, NULL);
 
     // Free allocated memory:
     printf("Freeing memory..");
@@ -103,8 +104,8 @@ void laplacianSmoothing(void) {
     clearScreen();
     printf("Laplacian surface smoothing (2.5D):\n");
 
-    // Import data and build a "FloatSurface":
-    struct FloatSurface *surf = inputDepthModel();
+    // Import data and build a "FloatSurface" (NULL:ask for input path):
+    struct FloatSurface *surf = inputDepthModel(NULL);
     
     // Number of iterations:
     int iterations = intInput(1, 500, "Enter number of smoothing iterations (1 - 500): ");
@@ -119,7 +120,8 @@ void laplacianSmoothing(void) {
     // Export file (GeoTIFF format):
     printf("Exporting file.. ");
     fflush(stdout);
-    writeSurfaceToFile(surf);
+    // Use default output filename:
+    writeSurfaceToFile(surf, NULL);
 
     // Free allocated memory:
     printf("Freeing memory..");

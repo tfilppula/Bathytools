@@ -9,12 +9,10 @@
 /*
 *   Simple output filepath parser
 */
-char *parsePath(char *inputfp, char *addon) {
+void parsePath(char *inputfp, char *addon, char *ret) {
     int leninput = strlen(inputfp);
-    int lenaddon = strlen(addon);
-    char *ret = calloc(leninput + lenaddon, 1);
- 
     int index = 0;
+
     while (index < leninput) {
         if (inputfp[index] == '.') {
             ret[index] = '\0';
@@ -25,7 +23,6 @@ char *parsePath(char *inputfp, char *addon) {
     }
  
     strcat(ret, addon);
-    return ret;
 }
 
 
@@ -53,12 +50,19 @@ float *convertFloatArray(struct FloatSurface *input) {
 *   Writes FloatSurface to a GeoTIFF file
 *   - Uses GDAL for I/O
 */
-void writeSurfaceToFile(struct FloatSurface *input) {
+void writeSurfaceToFile(struct FloatSurface *input, char *outputpath) {
     GDALAllRegister();
     const char *format = "GTiff";
     GDALDriverH driver = GDALGetDriverByName(format);
     char **papszOptions = NULL;
-    char *outputfp = parsePath(input->inputfp, "_smoothed_surface.tif");
+    char outputfp[1000];
+
+    // Parse output filename if NULL was passed as parameter.
+    if (outputpath == NULL) {
+        parsePath(input->inputfp, "_smoothed_surface.tif", outputfp);
+    }   else {
+        strcpy(outputfp, outputpath);
+    }
 
     papszOptions = CSLSetNameValue(papszOptions, "COMPRESS", "DEFLATE" );
     GDALDatasetH outdataset = GDALCreate(driver, outputfp, input->cols, input->rows, 1, GDT_Float32, papszOptions);
@@ -79,6 +83,4 @@ void writeSurfaceToFile(struct FloatSurface *input) {
     free(datalist);
     GDALClose(outdataset);
     printf("\n\nSurface exported to file: %s\n\n", outputfp);
-
-    free(outputfp);
 }

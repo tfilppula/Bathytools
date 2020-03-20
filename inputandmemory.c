@@ -12,15 +12,23 @@
 *   Builds a structured datatype (type "FloatSurface") variable from input depth model. 
 *   - Allocates memory and populates struct
 *   - Returns pointer to FloatSurface
+*   - PATH parameter:
+*       - If NULL, asks user to define input path
+*       - If path is passed as a parameter, skips user input stage (CLI use)
 */
-struct FloatSurface *inputDepthModel(void) {
-    // Stage 1: Get file path
+struct FloatSurface *inputDepthModel(const char *path) {
     int len = 1000;                                                     // Space for 1000 characters
     char filepath[len];
-    printf("\nEnter full filepath to bathymetric surface (e.g. /users/john/desktop/test.bag):\n");
-    fgets(filepath, len, stdin);
-    len = strlen(filepath);
-    filepath[len-1] = '\0';
+
+    // Stage 1: Get file path if NULL was passed as a parameter    
+    if (path == NULL) {
+        printf("\nEnter full filepath to bathymetric surface (e.g. /users/john/desktop/test.bag):\n");
+        fgets(filepath, len, stdin);
+        len = strlen(filepath);
+        filepath[len-1] = '\0';
+    }   else {                                                          // Path passed as a parameter
+        strcpy(filepath, path);
+    }
 
     // Stage 2: Open dataset
     GDALDatasetH dataset = NULL;
