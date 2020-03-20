@@ -12,7 +12,7 @@
 /*
 *   Simple main function:
 */
-int main(int argc, char const *argv[]) {
+int main(int argc, const char *argv[]) {
 
     if (argc == 2 && strcmp(argv[1], "-ui") == 0) {
         clearScreen();

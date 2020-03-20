@@ -65,7 +65,7 @@ struct Coin {
 
 
 // Control functions: (main.c)
-int main(int argc, char const *argv[]);
+int main(int argc, const char *argv[]);
 void rollingCoinSmoothing(void);
 void laplacianSmoothing(void);
 void testCoins(void);
