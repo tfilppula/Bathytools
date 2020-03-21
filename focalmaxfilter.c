@@ -2,8 +2,8 @@
 
 /*
 *   This file contains:
-*   - Navigationally safe Rolling Coin surface manipulation (2.5D) functions
-*   - Coin is defined by structured datatype "Coin"
+*   - Shoal buffering function
+*   - Essentially a 3 x 3 cell focal maximum filter
 */
 
 
