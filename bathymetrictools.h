@@ -94,6 +94,9 @@ void getCoinIndexRange(const int rows, const int cols, const int current_row, co
 // Shoal buffering (focal maximum filtering): (focalmaxfilter.c)
 void maxFilterSurface(struct FloatSurface *src);
 
+// Surface offset: (offset.c)
+void offset(struct FloatSurface *src, const float offset);
+
 // Laplacian surface smoothing (safe for navigation): (laplacian_smoothing.c)
 void smoothLaplacian(const int iterations, struct FloatSurface *src);
 char isNodata(struct FloatSurface *src, int rowindex, int colindex);

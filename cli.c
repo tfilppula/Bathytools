@@ -29,6 +29,11 @@ void cli(int argc, const char *argv[]) {
         if (strcmp(argv[i], "-buffer") == 0) {
             printf("  -Buffer shoals\n");
             continue;
+        }   else if (strcmp(argv[i], "-offset") == 0 && argc > i+1) {
+            if (fabs(atof(argv[i+1]) - 0.0) > EPSILON) {
+                printf("  -Offset, %.3f m\n", atof(argv[i+1]));
+                i++;
+            }
         }   else if (strcmp(argv[i], "-laplacian") == 0 && argc > i+1) {
             if (atoi(argv[i+1]) > 0) {
                 printf("  -Laplacian smoothing, %d iterations\n", atoi(argv[i+1]));
@@ -41,8 +46,7 @@ void cli(int argc, const char *argv[]) {
                     i+=2;
                 }
             }
-        }
-        else {
+        }   else {
             inputflag = 0;
         }
     }
@@ -62,6 +66,12 @@ void cli(int argc, const char *argv[]) {
         if (strcmp(argv[i], "-buffer") == 0) {
             // Apply 3x3 cell focal maximun filter:
             maxFilterSurface(surf);
+        }   else if (strcmp(argv[i], "-offset") == 0 && argc > i+1) {
+            if (fabs(atof(argv[i+1]) - 0.0) > EPSILON) {
+                // Apply surface offset:
+                offset(surf, atof(argv[i+1]));
+                i++;
+            }
         }   else if (strcmp(argv[i], "-laplacian") == 0 && argc > i+1) {
             if (atoi(argv[i+1]) > 0) {
                 // Apply Laplacian smoothing:

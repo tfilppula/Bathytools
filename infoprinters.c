@@ -14,14 +14,16 @@ void printHelp(void) {
     printf("\n 1. To launch user interface use -ui flag:\n\n\tsurfacetools -ui\n");
     printf("\n 2. CLI (use for scripting):\n\n\tsurfacetools [full inputfilepath] [full outputfilepath] -methodflag P -methodflag P -trimflag(Rolling Coin only) \n");
     printf("\n\tMethods:\n\t  -buffer = Buffer shoals (3x3 cell focal max filter)\n\t\t* No parameters\n\t\t* Use example: surfacetools [inputfile] [outputfile] -buffer");
+    printf("\n\t  -offset = Vertical surface offset in meters\n\t\t* Parameters: [h] = offset in meters (float), can be positive or negative (addition to cell value)\n\t\t* Use example: surfacetools [inputfile] [outputfile] -offset -0.25");
     printf("\n\t  -laplacian = Laplacian smoothing\n\t\t* Parameters: [N] = number of iterations (integer)\n\t\t* Use example: surfacetools [inputfile] [outputfile] -laplacian 25");
     printf("\n\t  -rollcoin = Rolling Coin smoothing\n\t\t* Parameters: [R] = coin radius in cells (integer), [trim/notrim] = trim flag (coin edge trimming)");
     printf("\n\t\t* Use example: surfacetools [inputfile] [outputfile] -rollcoin 15 trim");
     printf("\n\n\tExamples:\n");
     printf("\t\tBuffer shoals: surfacetools inputfile.tiff outputfile.tiff -buffer\n");
+    printf("\t\tOffset: surfacetools inputfile.tiff outputfile.tiff -offset -0.55\n");
     printf("\t\tLaplacian smoothing, 10 iterations: surfacetools inputfile.tiff outputfile.tiff -laplacian 10\n");
     printf("\t\tRolling Coin, radius 15, trimmed coin edges: surfacetools inputfile.tiff outputfile.tiff -rollcoin 15 trim\n");
-    printf("\t\tChaining process steps (Shoal Buffering >> Rolling Coin >> Laplacian Smoothing):\n\t\t  surfacetools inputfile.tiff outputfile.tiff -buffer -rollcoin 13 notrim -laplacian 10\n\n");
+    printf("\t\t\nChaining process steps (Shoal Buffering >> Rolling Coin >> Laplacian Smoothing >> Offset):\n\t\t  surfacetools inputfile.tiff outputfile.tiff -buffer -rollcoin 13 notrim -laplacian 10 -offset 0.35\n\n");
 }
 
 
