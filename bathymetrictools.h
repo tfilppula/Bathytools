@@ -90,6 +90,8 @@ void freeBooleanArray(char **array, const int rows);
 void coinRollSurface(struct FloatSurface *src, struct Coin *penny);
 float getShoalestDepthOnCoin(struct FloatSurface *src, struct Coin *penny, const int row_index, const int col_index);
 void getCoinIndexRange(const int rows, const int cols, const int current_row, const int current_col, const int coin_radius, int *index_ranges);
+
+// Shoal buffering (focal maximum filtering): (focalmaxfilter.c)
 void maxFilterSurface(struct FloatSurface *src);
 
 // Laplacian surface smoothing (safe for navigation): (laplacian_smoothing.c)
