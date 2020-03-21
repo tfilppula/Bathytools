@@ -24,7 +24,7 @@ $(shell mkdir -p $(BIN_DIR))
 
 all: surfacetools
 
-surfacetools: main.o rolling_coin_smoothing.o laplacian_smoothing.o inputandmemory.o fileoutput.o infoprinters.o
+surfacetools: main.o rolling_coin_smoothing.o laplacian_smoothing.o inputandmemory.o fileoutput.o infoprinters.o cli.o
 	$(CC) $(FLAGS) $(LIBS) $(OBJECT_DIR)*.o -o $(BIN_DIR)surfacetools
 
 %.o: %.c

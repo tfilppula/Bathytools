@@ -14,6 +14,8 @@
 *   - Memory management and no data handling
 */
 void coinRollSurface(struct FloatSurface *src, struct Coin *penny) {
+    printf("Rolling Coin..");
+    fflush(stdout);
     const int radius = penny->radius;           // Valid indexes of coin are normally [-radius, radius]
     int *limits = calloc(4, sizeof(int));       // An array to hold valid coin index ranges for special cases
     const float nodata = src->nodata;
@@ -68,6 +70,8 @@ void coinRollSurface(struct FloatSurface *src, struct Coin *penny) {
     src->array = temp;                      // Replace original data array with smoothed data array
     freeFloatArray(destruct, src->rows);    // Free original data array
     free(limits);                           // Free index range list memory
+    printf("Done\n");
+    fflush(stdout);
 }
 
 
@@ -162,6 +166,8 @@ void getCoinIndexRange(const int rows, const int cols, const int current_row, co
 *       - If X is shoalest, cell value doesn't change
 */
 void maxFilterSurface(struct FloatSurface *src) {
+    printf("Buffering shoals..");
+    fflush(stdout);
     float nodata = src->nodata;
     float max_elev = -15000.0;  // Placeholder for shoalest depth
     const float placeholder = max_elev;
@@ -281,4 +287,6 @@ void maxFilterSurface(struct FloatSurface *src) {
 
     // Free temporary data array
     freeFloatArray(temp, src->rows);
+    printf("Done\n");
+    fflush(stdout);
 }

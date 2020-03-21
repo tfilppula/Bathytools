@@ -40,12 +40,12 @@ struct FloatSurface *inputDepthModel(const char *path) {
         dataset = GDALOpen(filepath, GA_ReadOnly);                      // Try to open dataset
     } else {
         printf("File read error. Recheck file path.\nExiting.\n");
-        exit(0);
+        exit(EXIT_FAILURE);
     }
  
     if (dataset == NULL) {
         printf("File read error. Recheck file path.\nExiting.\n");
-        exit(0);
+        exit(EXIT_FAILURE);
     }   else{
         printf("File read successful. Building surface..");
     }
@@ -112,7 +112,7 @@ struct FloatSurface *inputDepthModel(const char *path) {
     ret->array = array;     // Store data array pointer to Struct
 
     GDALClose(dataset);     // Data is now stored in struct, file can be closed
-    printf("Done\n\n");
+    printf("Done\n");
     return ret;             // Return struct pointer
 }
 

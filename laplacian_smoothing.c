@@ -20,6 +20,8 @@
 *   - Memory management
 */
 void smoothLaplacian(const int iterations, struct FloatSurface *src) {
+    printf("Laplacian smoothing..");
+    fflush(stdout);
     const double nodata = src->nodata;
 
     // Build extra array to hold smoothed surface (type float**):
@@ -46,6 +48,8 @@ void smoothLaplacian(const int iterations, struct FloatSurface *src) {
 
     // Free memory of the temporary array:
     freeFloatArray(smooth_array, src->rows);
+    printf("Done\n");
+    fflush(stdout);
 }
 
 

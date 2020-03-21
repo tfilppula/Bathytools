@@ -20,7 +20,8 @@
 *   Bathymetric surface tools was originally written in 2017/2018 to be a part of my master's thesis
 *
 *   Author:                 Topi Filppula
-*   Latest update:          30.03.2019
+*   Latest update:          21.03.2020,     v 1.2, Command line interface added
+*                  
 *
 *   Originally written for Unix (Mac OS), possible later versions might or might not be cross-platform.
 *
@@ -72,6 +73,9 @@ void testCoins(void);
 void clearScreen(void);
 int intInput(const int lower, const int upper, const char *text);
 
+// Command line interface functions: (cli.c)
+void cli(int argc, const char *argv[]);
+
 // File input and memory management functions: (inputandmemory.c)
 struct FloatSurface *inputDepthModel(const char *path);
 struct Coin *createCoin(const int radius, const char trim);
@@ -97,7 +101,7 @@ float getSafeSmoothDepth(struct FloatSurface *src, int row, int col);
 // File output functions: (fileoutput.c)
 void parsePath(char *inputfp, char *addon, char *ret);
 float *convertFloatArray(struct FloatSurface *input);
-void writeSurfaceToFile(struct FloatSurface *input, char *outputpath);
+void writeSurfaceToFile(struct FloatSurface *input, const char *outputpath);
 
 // Printers for help etc:
 void printHelp(void);

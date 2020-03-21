@@ -50,7 +50,9 @@ float *convertFloatArray(struct FloatSurface *input) {
 *   Writes FloatSurface to a GeoTIFF file
 *   - Uses GDAL for I/O
 */
-void writeSurfaceToFile(struct FloatSurface *input, char *outputpath) {
+void writeSurfaceToFile(struct FloatSurface *input, const char *outputpath) {
+    printf("Exporting file..");
+    fflush(stdout);
     GDALAllRegister();
     const char *format = "GTiff";
     GDALDriverH driver = GDALGetDriverByName(format);
@@ -82,5 +84,6 @@ void writeSurfaceToFile(struct FloatSurface *input, char *outputpath) {
     
     free(datalist);
     GDALClose(outdataset);
-    printf("\n\nSurface exported to file: %s\n\n", outputfp);
+    printf("Done. Surface exported to file: %s\n\n", outputfp);
+    fflush(stdout);
 }

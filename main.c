@@ -46,8 +46,10 @@ int main(int argc, const char *argv[]) {
                 break;
             }
         }
+
     }   else if (argc > 3) {
-        printf("CLI-toiminnot tänne\n");
+        cli(argc, argv);
+
     }   else {
         clearScreen();
         printHelp();
@@ -80,18 +82,13 @@ void rollingCoinSmoothing(void) {
 
     // Buffer shoals if buffering is selected:
     if (buffering == 1) {
-        printf("\nBuffering shoals..\n");
         maxFilterSurface(surf);
     }
 
     // Generalize/smooth surface:
-    printf("Smoothing surface..\n");
-    fflush(stdout);
     coinRollSurface(surf, penny);
 
     // Export file (GeoTIFF format):
-    printf("Exporting file.. ");
-    fflush(stdout);
     // Use default output filename:
     writeSurfaceToFile(surf, NULL);
 
@@ -118,15 +115,9 @@ void laplacianSmoothing(void) {
     int iterations = intInput(1, 500, "Enter number of smoothing iterations (1 - 500): ");
 
     // Smooth:
-    printf("Smoothing surface.. ");
-    fflush(stdout);
     smoothLaplacian(iterations, surf);
-    printf("Done\n");
-    fflush(stdout);
 
     // Export file (GeoTIFF format):
-    printf("Exporting file.. ");
-    fflush(stdout);
     // Use default output filename:
     writeSurfaceToFile(surf, NULL);
 
