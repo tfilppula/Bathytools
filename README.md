@@ -29,7 +29,7 @@ Methods can be chained together for example as follows:
 surfacetools inputfile.tiff outputfile.tiff -buffer -rollcoin 13 notrim -laplacian 10 -offset 0.35
 ```
 The above example does the following:
-1. Buffer shoals
+1. Apply Shoal buffering (3x3 cell focal maximum filter)
 2. Apply Rolling Coin smoothing to buffered surface (Coin radius = 12 cells, no trimming of coin edges)
 3. Apply Laplacian smoothing (10 iterations)
 4. Lastly, apply an offset of +0.35 m for every grid cell
