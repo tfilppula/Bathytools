@@ -14,7 +14,7 @@ Disclaimer:
 Compile using make and makefile (provided) or using for example gcc or clang (link gdal when compiling):
 
 ```
-gcc -g -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=gnu11 -o bathytools *.c -lgdal
+gcc -g -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=gnu11 -o surfacetools *.c -lgdal
 ```
 ----
 These tools includes a Command Line Interface and also a simple text-based UI. Available methods are:
