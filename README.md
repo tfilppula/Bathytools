@@ -16,7 +16,7 @@ Compile using make and makefile (provided) or using for example gcc or clang (li
 ```
 gcc -g -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=gnu11 -o bathytools *.c -lgdal
 ```
-
+----
 These tools includes a Command Line Interface and also a simple text-based UI. Available methods are:
 * Rolling Coin surface smoothing (see my thesis for reference)
 * Laplacian smoothing (navigationally safe iterative Laplacian interpolation)
