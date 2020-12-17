@@ -11,7 +11,7 @@ OBJECT_DIR = obj/
 BIN_DIR = bin/
 
 # Flags with debugging helpers:
-FLAGS = -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=gnu11
+FLAGS = -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=c17
 LIBS = -lgdal
 
 # Clean:

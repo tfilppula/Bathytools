@@ -20,7 +20,7 @@
 *   Bathymetric surface tools was originally written in 2017/2018 to be a part of my master's thesis
 *
 *   Author:                 Topi Filppula
-*   Latest update:          21.03.2020,     v 1.2, Command line interface added
+*   Latest update:          17.12.2020,     v 1.21, compiler c standard gnu11 > c17
 *                  
 *
 *   Originally written for Unix (Mac OS), possible later versions might or might not be cross-platform.
@@ -36,7 +36,7 @@
 *   1. Use either Make and the included makefile or 
 *   2. Compile manually for example like:
 *
-*   gcc -g -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=gnu11 -o bathytools *.c -lgdal
+*   gcc -g -O3 -march=native -Wall -Wextra -Wfloat-equal -Werror -std=c17 -o bathytools *.c -lgdal
 */
 
 
